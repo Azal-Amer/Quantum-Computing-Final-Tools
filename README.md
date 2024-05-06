@@ -51,13 +51,25 @@ The following quantum gates are predefined in the script:
 - S gate (S)
 - Pauli-Y gate (Y)
 - T gate (T)
+- T_dagger gate (T_dagger)
+
 - Hadamard gate (H)
 - Projection gate (P_0)
 - Pauli-Z gate (Z)
 - S_dagger gate (S_dagger)
 
 You can apply these gates to a photon using the * operator.
-## Example
+## Example 1 : Converting Basis
+Given some photon with arbitrary polarization, as long as we declare teh amplitudes using sympy, we can convert the photon to different polarization bases. Here's an example:
+```
+photon = Photon(polarization='RL',amplitudes=sp.Matrix([sp.pi/2,sp.I*sp.pi/2]))
+photon.convertDA()
+```
+The above code then returns the below output:
+![Example output with an arbitrary wavefunction input](example1.png)
+Note that the direction can go unspecified. The output returns two visuals, the digital representation, and the desired one.
+
+## Example 2 : Beamsplitter
 Here's an example that demonstrates the usage of the Photon class and the application of quantum gates for the following scenario:
 ![Example problem with a beamsplitter and a photon](example.png)
 

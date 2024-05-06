@@ -16,7 +16,7 @@ Y = sp.Matrix([[0, -sp.I], [sp.I, 0]])
 
 # T gate (T)
 T = sp.Matrix([[1, 0], [0, sp.exp(sp.I * sp.pi / 4)]])
-
+T_dagger = sp.Matrix([[1, 0], [0, sp.exp(-sp.I * sp.pi / 4)]])
 # Hadamard gate (H)
 H = sp.Matrix([[1, 1], [1, -1]]) / sp.sqrt(2)
 
@@ -43,11 +43,43 @@ class Photon():
         elif(self.polarization=='RL'):
             self.digital = self.S*self.H*self.amplitudes
     def convertHV(self):
-        return self.digital
+        direction_symbol = ''
+        if(self.direction == '|'):
+            direction_symbol = '\\downarrow ,'
+        elif(self.direction == '-'):
+            direction_symbol = '\\rightarrow ,'
+        HVamplitude = self.digital
+        amplitude_0 = sp.simplify(HVamplitude[0])
+        amplitude_1 = sp.simplify(HVamplitude[1])
+        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|H\\rangle + {sp.latex(amplitude_1)}|V\\rangle"
+        display(Math(latex_code))
+        return Photon('HV',self.digital,self.direction)
     def convertDA(self):
-        return self.H*self.digital
+        direction_symbol = ''
+        if(self.direction == '|'):
+            direction_symbol = '\\downarrow ,'
+        elif(self.direction == '-'):
+            direction_symbol = '\\rightarrow ,'
+        DAamplitude = self.H*self.digital
+        amplitude_0 = sp.simplify(DAamplitude[0])
+        amplitude_1 = sp.simplify(DAamplitude[1])
+
+        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|D\\rangle + {sp.latex(amplitude_1)}|A\\rangle"
+        display(Math(latex_code))
+        return Photon('DA',DAamplitude,self.direction)
     def convertRL(self):
-        return self.S*self.H*self.digital
+        direction_symbol = ''
+        if(self.direction == '|'):
+            direction_symbol = '\\downarrow ,'
+        elif(self.direction == '-'):
+            direction_symbol = '\\rightarrow ,'
+        RLamplitude = self.S*self.H*self.digital
+        amplitude_0 = sp.simplify(RLamplitude[0])
+        amplitude_1 = sp.simplify(RLamplitude[1])
+
+        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|R\\rangle + {sp.latex(amplitude_1)}|L\\rangle"
+        display(Math(latex_code))
+        return Photon('RL',RLamplitude,self.direction)
     def __mul__(self,gate):
         return Photon(self.polarization,gate*self.amplitudes,self.direction)
     def _repr_mimebundle_(self, **kwargs):
@@ -69,7 +101,6 @@ class Photon():
             direction_symbol = '\\rightarrow ,'
         amplitude_0 = sp.simplify(self.digital[0])
         amplitude_1 = sp.simplify(self.digital[1])
-
         latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|0\\rangle + {sp.latex(amplitude_1)}|1\\rangle"
         
         display(Math(latex_code))
