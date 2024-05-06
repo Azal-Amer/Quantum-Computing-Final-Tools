@@ -51,7 +51,7 @@ class Photon():
         HVamplitude = self.digital
         amplitude_0 = sp.simplify(HVamplitude[0])
         amplitude_1 = sp.simplify(HVamplitude[1])
-        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|H\\rangle + {sp.latex(amplitude_1)}|V\\rangle"
+        latex_code = f"|{direction_symbol} \\psi \\rangle = \\left({sp.latex(amplitude_0)}\\right)|H\\rangle + \\left({sp.latex(amplitude_1)}\\right)|V\\rangle"
         display(Math(latex_code))
         return Photon('HV',self.digital,self.direction)
     def convertDA(self):
@@ -64,7 +64,7 @@ class Photon():
         amplitude_0 = sp.simplify(DAamplitude[0])
         amplitude_1 = sp.simplify(DAamplitude[1])
 
-        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|D\\rangle + {sp.latex(amplitude_1)}|A\\rangle"
+        latex_code = f"|{direction_symbol} \\psi \\rangle = \\left({sp.latex(amplitude_0)}\\right)|D\\rangle + \\left({sp.latex(amplitude_1)}\\right)|A\\rangle"
         display(Math(latex_code))
         return Photon('DA',DAamplitude,self.direction)
     def convertRL(self):
@@ -77,7 +77,7 @@ class Photon():
         amplitude_0 = sp.simplify(RLamplitude[0])
         amplitude_1 = sp.simplify(RLamplitude[1])
 
-        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|R\\rangle + {sp.latex(amplitude_1)}|L\\rangle"
+        latex_code = f"|{direction_symbol} \\psi \\rangle = \\left({sp.latex(amplitude_0)}\\right)|R\\rangle + \\left({sp.latex(amplitude_1)}\\right)|L\\rangle"
         display(Math(latex_code))
         return Photon('RL',RLamplitude,self.direction)
     def __mul__(self,gate):
@@ -91,7 +91,7 @@ class Photon():
         amplitude_0 = sp.simplify(self.digital[0])
         amplitude_1 = sp.simplify(self.digital[1])
 
-        latex_code = f"|{direction_symbol} \\psi \\rangle = {sp.latex(amplitude_0)}|0\\rangle + {sp.latex(amplitude_1)}|1\\rangle"
+        latex_code = f"|{direction_symbol} \\psi \\rangle = \\left({sp.latex(amplitude_0)}\\right)|0\\rangle + \\left({sp.latex(amplitude_1)}\\right)|1\\rangle"
         display(Math(latex_code))
     def visualize(self):
         direction_symbol = ''
