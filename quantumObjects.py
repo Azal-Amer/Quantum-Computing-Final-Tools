@@ -41,7 +41,7 @@ class Photon():
         elif(self.polarization=='DA'):
             self.digital = self.H*self.amplitudes
         elif(self.polarization=='RL'):
-            self.digital = self.S*self.H*self.amplitudes
+            self.digital = H*S_dagger*self.amplitudes
     def convertHV(self):
         direction_symbol = ''
         if(self.direction == '|'):

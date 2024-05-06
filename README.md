@@ -60,9 +60,11 @@ The following quantum gates are predefined in the script:
 
 You can apply these gates to a photon using the * operator.
 ## Example 1 : Converting Basis
-Given some photon with arbitrary polarization, as long as we declare teh amplitudes using sympy, we can convert the photon to different polarization bases. Here's an example:
+Given some photon with arbitrary polarization, as long as we declare teh amplitudes using sympy, we can convert the photon to different polarization bases. Here's an example with the below wavefunction
+![Example input with an arbitrary wavefunction input](example1Input.png)
+:
 ```
-photon = Photon(polarization='RL',amplitudes=sp.Matrix([sp.pi/2,sp.I*sp.pi/2]))
+photon = Photon(polarization='RL',amplitudes=sp.Matrix([sp.pi/2,1/sp.sqrt(2)]))
 photon.convertDA()
 ```
 The above code then returns the below output:
