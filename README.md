@@ -19,6 +19,7 @@ You can install the required packages using pip:
 
 
 The polarization parameter can be 'HV', 'DA', or 'RL' for horizontal/vertical, diagonal/anti-diagonal, or right/left circular polarization, respectively. The amplitudes parameter should be a SymPy Matrix object containing the amplitudes of the photon in the specified polarization basis. The direction parameter can be '-' or '|' to indicate the direction of the photon being sidewyas or up and down.
+
 3. Apply quantum gates to the photon using the * operator:
 ```
 photon = photon * X  # Apply Pauli-X gate
