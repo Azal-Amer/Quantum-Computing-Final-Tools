@@ -62,13 +62,14 @@ You can apply these gates to a photon using the * operator.
 ## Example 1 : Converting Basis
 Given some photon with arbitrary polarization, as long as we declare teh amplitudes using sympy, we can convert the photon to different polarization bases. Here's an example with the below wavefunction
 ![Example input with an arbitrary wavefunction input](example1Input.png)
-:
+
 ```
 photon = Photon(polarization='RL',amplitudes=sp.Matrix([sp.pi/2,1/sp.sqrt(2)]))
 photon.convertDA()
 ```
 The above code then returns the below output:
 ![Example output with an arbitrary wavefunction input](example1.png)
+
 Note that the direction can go unspecified. The output returns two visuals, the digital representation, and the desired one.
 
 ## Example 2 : Beamsplitter
