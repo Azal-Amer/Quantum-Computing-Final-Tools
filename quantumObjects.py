@@ -2,6 +2,17 @@ import numpy as np
 import sympy as sp
 from IPython.display import display, Math
 
+#Defining Vectors
+
+ketV = sp.Matrix([0,1])
+ketH = sp.Matrix([1,0])
+
+ketD = sp.Matrix([1,1])
+ketA = sp.Matrix([1,-1])
+ketR = sp.Matrix([1,sp.I])
+ketL = sp.Matrix([1,-sp.I])
+
+#Defining Gates
 # Identity gate (I)
 I = sp.Matrix([[1, 0], [0, 1]])
 
